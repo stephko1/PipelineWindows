@@ -5,7 +5,7 @@ lane :create_app do
 end
 
 platform :ios do
-	before all do
+	before_all do
 		Dotenv.load ".env"
 	end
 	
