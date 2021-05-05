@@ -11,38 +11,45 @@ platform :ios do
 	
 	desc "Signing"
 	lane :signing do
-		sync_code_signing #match
+		#sync_code_signing #match
+		match(
+		 type: "development",
+		 app_identifier: "com.meks.Pipeline.Development",
+		 api_key_path: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF",
+		 username: "meks2016app@gmail.com",
+		 team_id: "Stephan Kouch",
+		 team_name: "Stephan Kouch",
+		 storage_mode: "git",
+		 git_url: "https://github.com/stephko1/certificates.git",
+		 git_branch: "main",
+		 shallow_clone: true,
+		 git_private_key: "/Users/meks/Desktop/id_ed25519"
+		)
+		 
 		mapping = Actions.lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
 		update_code_signing_settings(profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']])
 	end
 
 
-  desc "Build app"
-  lane :build do
-      setupCodeSigning('28051993', '28051993', '/Users/Stephan/Desktop/ios_development.mobileprovision', '/Users/Stephan/Desktop/ios_development.cer')
+  	desc "Build app"
+	lane :build do
+  		build_ios_app
+	end
+	
+	desc "Deploy to Beta"
+	lane :beta do
+	
+	end
 
-      
-
-      build_app(scheme: "Pipeline")
-
-  end
-end
-
-
-def setupCodeSigning(keychainPassword, certificatePassword, profilePath, certificatePath)
-  create_keychain(
-    name: "CI",
-    password: keychainPassword,
-    default_keychain: true,
-    unlock: true,
-    timeout: 3600,
-    lock_when_sleeps: false
-  )
-  install_provisioning_profile(path: profilePath)
-  import_certificate(
-    certificate_path: certificatePath,
-    certificate_password: certificatePassword,
-    keychain_name: "CI",
-    keychain_password: keychainPassword
-  )
+	desc "Release app"
+	lane :release do
+		app_store_connect_api_key(
+		 key_id: "D4W6CGNRJF",
+		 issuer_id: "3548afcc-2078-4234-b513-2cd64fe470af",
+		 key_filepath: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF.p8",
+		 duration: 1200,
+		 in_house: false
+		)
+		upload_to_app_store
+	end
 end

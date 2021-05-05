@@ -20,7 +20,7 @@ platform :android do
 		gradle(task: 'test')
 	end
 
-	desc 'Build the Android application.'
+	desc 'Build the Android App'
 	lane :build do
 		gradle(
 			task: 'assemble', 
