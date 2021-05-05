@@ -15,7 +15,6 @@ platform :ios do
 		match(
 		 type: "development",
 		 app_identifier: "com.meks.Pipeline.Development",
-		 api_key_path: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF",
 		 username: "meks2016app@gmail.com",
 		 team_id: "Stephan Kouch",
 		 team_name: "Stephan Kouch",
@@ -32,7 +31,6 @@ platform :ios do
 		match(
 		 type: "appstore",
 		 app_identifier: "com.meks.Pipeline",
-		 api_key_path: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF",
 		 username: "meks2016app@gmail.com",
 		 team_id: "Stephan Kouch",
 		 team_name: "Stephan Kouch",
