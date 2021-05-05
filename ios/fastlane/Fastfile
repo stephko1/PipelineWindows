@@ -28,6 +28,24 @@ platform :ios do
 		 
 		mapping = Actions.lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
 		update_code_signing_settings(profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']])
+		
+		match(
+		 type: "appstore",
+		 app_identifier: "com.meks.Pipeline",
+		 api_key_path: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF",
+		 username: "meks2016app@gmail.com",
+		 team_id: "Stephan Kouch",
+		 team_name: "Stephan Kouch",
+		 storage_mode: "git",
+		 git_url: "https://github.com/stephko1/certificates.git",
+		 git_branch: "main",
+		 shallow_clone: true,
+		 git_private_key: "/Users/meks/Desktop/id_ed25519"
+		)
+		
+		mapping = Actions.lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
+		update_code_signing_settings(profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']])
+		
 	end
 
 
