@@ -8,8 +8,8 @@
 #username("meks2016app@gmail.com") # Your Apple Developer Portal username
 #shallow_clone true
 #force_for_new_devices true
-ENV["FASTLANE_PASSWORD"] = "M3k$2016"
-ENV["MATCH_PASSWORD"] = "M3k$2016"
+ENV["FASTLANE_PASSWORD"] = 'M3k$2016'
+ENV["MATCH_PASSWORD"] = 'M3k$2016'
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
