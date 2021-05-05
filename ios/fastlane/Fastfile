@@ -61,7 +61,7 @@ platform :ios do
 
   	desc "Build app"
 	lane :build do
-  		build_ios_app
+  		gym
 	end
 	
 	desc "Deploy to Beta"
