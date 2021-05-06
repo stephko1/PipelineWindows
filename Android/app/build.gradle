@@ -4,7 +4,8 @@ plugins {
 }
 sonarqube {
     properties {
-        property 'sonar.projectName', 'Pipeline Android'
+        property 'sonar.projectName', 'Pipeline Android',
+	property 'sonar.login', '19ce1d5040d6c4df7343170fb2ff825faddbf54c'
     }
 }
 def computeVersionCode() {
