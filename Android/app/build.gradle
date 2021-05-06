@@ -2,7 +2,11 @@ plugins {
     id 'com.android.application'
     id "org.sonarqube" version "3.2.0"
 }
-
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'Pipeline Android'
+    }
+}
 def computeVersionCode() {
     return Integer.valueOf(System.env.BUILD_NUMBER ?: 0)
 }
