@@ -49,16 +49,10 @@ platform :ios do
 	
 	desc "Alpha Version"
 	lane :alpha do
-		
-		app_store_connect_api_key(
-		 key_id: "D4W6CGNRJF",
-		 issuer_id: "3548afcc-2078-4234-b513-2cd64fe470af",
-		 key_filepath: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF.p8",
-		 duration: 1200,
-		 in_house: false
+		crashlytics(
+		  crashlytics_path: "./Pods/FirebaseCrashlytics", # path to your Crashlytics submit binary.
+		  ipa_path: "./build/Pipeline_alpha.ipa"
 		)
-		
-		
 	end
 	
 	desc "Beta Version"
