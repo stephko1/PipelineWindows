@@ -25,7 +25,7 @@ platform :ios do
 		
 		update_project_provisioning(
 		 xcodeproj: "Pipeline.xcodeproj",
-		 profile:ENV["sigh_com.meks.Pipeline_appstore_profile-path"],
+		 profile:ENV["sigh_com.meks.Pipeline_adhoc_profile-path"],
 		 build_configuration: "adhoc"
 		)
 
@@ -39,7 +39,7 @@ platform :ios do
           	 export_options: {
             		method: "ad-hoc",
             		provisioningProfiles: { 
-              		 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
+              		 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_adhoc_profile-name"]
             		}
           	 },
           	 codesigning_identity:"iPhone Distribution: Stephan Kouch (256YBZNBRS)",
