@@ -15,35 +15,27 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### create_app
-```
-fastlane create_app
-```
-
-
-----
-
 ## iOS
 ### ios nuke
 ```
 fastlane ios nuke
 ```
 nuke cert
-### ios signing
-```
-fastlane ios signing
-```
-Signing
 ### ios build
 ```
 fastlane ios build
 ```
-Build app
+Signing and Build
+### ios alpha
+```
+fastlane ios alpha
+```
+Alpha Version
 ### ios beta
 ```
 fastlane ios beta
 ```
-Deploy to Beta
+Beta Version
 ### ios release
 ```
 fastlane ios release
