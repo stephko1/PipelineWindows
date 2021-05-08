@@ -10,6 +10,7 @@
 		1A932ABE07A08900593200CF /* Pods_Pipeline_PipelineUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1C7DE24868FE6DF630C0D3 /* Pods_Pipeline_PipelineUITests.framework */; };
 		3802030E26DED05689C01C91 /* Pods_PipelineTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A125E46F356B78E99E34F00E /* Pods_PipelineTests.framework */; };
 		47AC5B331BDDDD3A58B44712 /* Pods_Pipeline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97054C2E52FEC63E0AE26EB6 /* Pods_Pipeline.framework */; };
+		AD60312F264695F700806D74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AD60312E264695F700806D74 /* GoogleService-Info.plist */; };
 		D4564C8726401F3C00D00F0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4564C8626401F3C00D00F0C /* AppDelegate.m */; };
 		D4564C8A26401F3C00D00F0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4564C8926401F3C00D00F0C /* ViewController.m */; };
 		D4564C8D26401F3C00D00F0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4564C8B26401F3C00D00F0C /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		97054C2E52FEC63E0AE26EB6 /* Pods_Pipeline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pipeline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C56CE6030B28F6FE0222C12 /* Pods-PipelineTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PipelineTests.debug.xcconfig"; path = "Target Support Files/Pods-PipelineTests/Pods-PipelineTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A125E46F356B78E99E34F00E /* Pods_PipelineTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PipelineTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD60312E264695F700806D74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4564C8226401F3C00D00F0C /* Pipeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pipeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4564C8526401F3C00D00F0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4564C8626401F3C00D00F0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		D4564C8426401F3C00D00F0C /* Pipeline */ = {
 			isa = PBXGroup;
 			children = (
+				AD60312E264695F700806D74 /* GoogleService-Info.plist */,
 				D4564C8526401F3C00D00F0C /* AppDelegate.h */,
 				D4564C8626401F3C00D00F0C /* AppDelegate.m */,
 				D4564C8826401F3C00D00F0C /* ViewController.h */,
@@ -183,6 +186,7 @@
 				D4564C7E26401F3C00D00F0C /* Sources */,
 				D4564C7F26401F3C00D00F0C /* Frameworks */,
 				D4564C8026401F3C00D00F0C /* Resources */,
+				36FC0ED1A032BCB9C15CD664 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -220,6 +224,7 @@
 				D4564CA126401F3D00D00F0C /* Sources */,
 				D4564CA226401F3D00D00F0C /* Frameworks */,
 				D4564CA326401F3D00D00F0C /* Resources */,
+				A80739321E8C24198BC84032 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4564C9226401F3D00D00F0C /* LaunchScreen.storyboard in Resources */,
+				AD60312F264695F700806D74 /* GoogleService-Info.plist in Resources */,
 				D4564C8F26401F3D00D00F0C /* Assets.xcassets in Resources */,
 				D4564C8D26401F3C00D00F0C /* Main.storyboard in Resources */,
 			);
@@ -303,6 +309,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		36FC0ED1A032BCB9C15CD664 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pipeline/Pods-Pipeline-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pipeline/Pods-Pipeline-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pipeline/Pods-Pipeline-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3BBC09EEF1168B6F5B0A2610 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -367,6 +390,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A80739321E8C24198BC84032 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pipeline-PipelineUITests/Pods-Pipeline-PipelineUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pipeline-PipelineUITests/Pods-Pipeline-PipelineUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pipeline-PipelineUITests/Pods-Pipeline-PipelineUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
