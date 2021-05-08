@@ -1,50 +1,20 @@
 default_platform(:ios)
 
-lane :create_app do
-	create_app_online #produce
-end
-
 platform :ios do
-	before_all do
-		Dotenv.load ".env"
-	end
-	desc "nuke cert"
-	lane :nuke do
-		match_nuke(
-		 type: "appstore",
-		 app_identifier: "com.meks.Pipeline",
-		 username: "meks2016app@gmail.com",
-		 team_id: "Stephan Kouch",
-		 team_name: "Stephan Kouch",
-		 storage_mode: "git",
-		 git_url: "https://github.com/stephko1/certificates.git",
-		 git_branch: "main",
-		 shallow_clone: true,
-		 git_private_key: "/Users/meks/Desktop/id_ed25519"
-		)
-		match_nuke(
-		 type: "development",
-		 app_identifier: "com.meks.Pipeline",
-		 username: "meks2016app@gmail.com",
-		 team_id: "Stephan Kouch",
-		 team_name: "Stephan Kouch",
-		 storage_mode: "git",
-		 git_url: "https://github.com/stephko1/certificates.git",
-		 git_branch: "main",
-		 shallow_clone: true,
-		 git_private_key: "/Users/meks/Desktop/id_ed25519"
-		)
-	end	
-
-	desc "Signing"
+	
+	desc "Signing and Build"
 	lane :signing do
-		#sync_code_signing #match
+		
+		disable_automatic_code_signing(
+		 path:"/Users/meks/Desktop/Jenkins/workspace/Pipeline/ios/Pipeline.xcodeproj", 
+		 team_id: "256YBZNBRS"
+		)
 		
 		match(
-		 type: "appstore",
+		 type: "adhoc",
 		 app_identifier: "com.meks.Pipeline",
 		 username: "meks2016app@gmail.com",
-		 team_id: "Stephan Kouch",
+		 team_id: "256YBZNBRS",
 		 team_name: "Stephan Kouch",
 		 storage_mode: "git",
 		 git_url: "https://github.com/stephko1/certificates.git",
@@ -53,24 +23,33 @@ platform :ios do
 		 git_private_key: "/Users/meks/Desktop/id_ed25519"
 		)
 		
-		mapping = Actions.lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING]
-		update_code_signing_settings(profile_name: mapping[ENV['MATCH_APP_IDENTIFIER']])
-		
-	end
+		update_project_provisioning(
+		 xcodeproj: "Pipeline.xcodeproj",
+		 profile:ENV["sigh_com.meks.Pipeline_appstore_profile-path"],
+		 build_configuration: "adhoc"
+		)
 
-
-  	desc "Build app"
-	lane :build do
-  		gym
+		gym(
+		 workspace: "Pipeline.xcworkspace",
+          	 scheme: "Pipeline",
+          	 configuration: "Debug",
+          	 clean: true,
+          	 export_method: "ad-hoc",
+          	 output_directory:"./build/",
+          	 export_options: {
+            		method: "ad-hoc",
+            		provisioningProfiles: { 
+              		 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
+            		}
+          	 },
+          	 codesigning_identity:"iPhone Distribution: Stephan Kouch (256YBZNBRS)",
+          	 output_name: "Pipeline_alpha.ipa"
+        )
 	end
 	
-	desc "Deploy to Beta"
-	lane :beta do
-		upload_to_testflight
-	end
-
-	desc "Release app"
-	lane :release do
+	desc "Alpha Version"
+	lane :alpha do
+		
 		app_store_connect_api_key(
 		 key_id: "D4W6CGNRJF",
 		 issuer_id: "3548afcc-2078-4234-b513-2cd64fe470af",
@@ -78,6 +57,110 @@ platform :ios do
 		 duration: 1200,
 		 in_house: false
 		)
-		upload_to_app_store
+		
+		
+	end
+	
+	desc "Beta Version"
+	lane :beta do
+		match(
+		 type: "development",
+		 app_identifier: "com.meks.Pipeline",
+		 username: "meks2016app@gmail.com",
+		 team_id: "256YBZNBRS",
+		 team_name: "Stephan Kouch",
+		 storage_mode: "git",
+		 git_url: "https://github.com/stephko1/certificates.git",
+		 git_branch: "main",
+		 shallow_clone: true,
+		 git_private_key: "/Users/meks/Desktop/id_ed25519"
+		)
+		
+		update_project_provisioning(
+		 xcodeproj: "Pipeline.xcodeproj",
+		 profile:ENV["sigh_com.meks.Pipeline_appstore_profile-path"],
+		 build_configuration: "Development"
+		)
+
+		gym(
+		 workspace: "Pipeline.xcworkspace",
+          	 scheme: "Pipeline",
+          	 configuration: "Development",
+          	 clean: true,
+          	 export_method: "development",
+          	 output_directory:"./build/",
+          	 export_options: {
+            		method: "development",
+            		provisioningProfiles: { 
+              		 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
+            		}
+          	 },
+          	 codesigning_identity:"iPhone Distribution: Stephan Kouch (256YBZNBRS)",
+          	 output_name: "Pipeline_beta.ipa"
+        )
+		
+		app_store_connect_api_key(
+		 key_id: "D4W6CGNRJF",
+		 issuer_id: "3548afcc-2078-4234-b513-2cd64fe470af",
+		 key_filepath: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF.p8",
+		 duration: 1200,
+		 in_house: false
+		)
+		
+		upload_to_testflight(
+		 ipa: "./build/Pipeline_beta.ipa"
+		)
+		
+	end
+	
+
+	desc "Release app"
+	lane :release do
+		match(
+		 type: "appstore",
+		 app_identifier: "com.meks.Pipeline",
+		 username: "meks2016app@gmail.com",
+		 team_id: "256YBZNBRS",
+		 team_name: "Stephan Kouch",
+		 storage_mode: "git",
+		 git_url: "https://github.com/stephko1/certificates.git",
+		 git_branch: "main",
+		 shallow_clone: true,
+		 git_private_key: "/Users/meks/Desktop/id_ed25519"
+		)
+		
+		update_project_provisioning(
+		 xcodeproj: "Pipeline.xcodeproj",
+		 profile:ENV["sigh_com.meks.Pipeline_appstore_profile-path"],
+		 build_configuration: "Release"
+		)
+
+		gym(
+		 workspace: "Pipeline.xcworkspace",
+          	 scheme: "Pipeline",
+          	 configuration: "Release",
+          	 clean: true,
+          	 export_method: "app-store",
+          	 output_directory:"./build/",
+          	 export_options: {
+            		method: "app-store",
+            		provisioningProfiles: { 
+              		 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
+            		}
+          	 },
+          	 codesigning_identity:"iPhone Distribution: Stephan Kouch (256YBZNBRS)",
+          	 output_name: "Pipeline_store.ipa"
+        )
+	
+		app_store_connect_api_key(
+		 key_id: "D4W6CGNRJF",
+		 issuer_id: "3548afcc-2078-4234-b513-2cd64fe470af",
+		 key_filepath: "/Users/meks/Desktop/AuthKey_D4W6CGNRJF.p8",
+		 duration: 1200,
+		 in_house: false
+		)
+		upload_to_app_store(
+		 ipa: "./build/Pipeline_store.ipa"
+		)
 	end
 end

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -242,6 +242,8 @@
 				TargetAttributes = {
 					D4564C8126401F3C00D00F0C = {
 						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = 256YBZNBRS;
+						ProvisioningStyle = Manual;
 					};
 					D4564C9926401F3D00D00F0C = {
 						CreatedOnToolsVersion = 10.1;
@@ -254,7 +256,7 @@
 				};
 			};
 			buildConfigurationList = D4564C7D26401F3C00D00F0C /* Build configuration list for PBXProject "Pipeline" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -548,7 +550,8 @@
 			baseConfigurationReference = EA8ED94A00C788AF7793FAC3 /* Pods-Pipeline.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 256YBZNBRS;
 				INFOPLIST_FILE = Pipeline/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -557,6 +560,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.meks.Pipeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.meks.Pipeline";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -566,7 +570,8 @@
 			baseConfigurationReference = 661D0CC80E3EB3557FB3ED27 /* Pods-Pipeline.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 256YBZNBRS;
 				INFOPLIST_FILE = Pipeline/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -575,6 +580,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.meks.Pipeline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "39b8d1af-d70d-4c31-99ea-f727acb30ad1";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.meks.Pipeline";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -612,6 +619,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.meks.PipelineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "39b8d1af-d70d-4c31-99ea-f727acb30ad1";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.meks.Pipeline";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pipeline.app/Pipeline";
 			};
@@ -648,6 +657,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.meks.PipelineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "39b8d1af-d70d-4c31-99ea-f727acb30ad1";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.meks.Pipeline";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Pipeline;
 			};
