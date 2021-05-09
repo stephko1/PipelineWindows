@@ -27,6 +27,6 @@
 }
 
 - (IBAction)crashButtonTapped:(id)sender {
-    @[][1];
+    //@[][1];
 }
 @end
