@@ -20,7 +20,7 @@ platform :android do
 		gradle(task: 'test')
 	end
 
-	desc 'Build the Android App'
+	desc 'Build and Sign the Android App'
 	lane :build do
 		gradle(
 			task: 'assemble', 
@@ -36,25 +36,11 @@ platform :android do
 		)
 	end
 
-	desc "Submit a new Internal Build"
-	lane :internal do
-		upload_to_play_store(
-			track: 'internal',
-			skip_upload_aab: true,
-			skip_upload_metadata:true,
-			skip_upload_changelogs:true,
-			skip_upload_images:true,
-			skip_upload_screenshots:true,
-			apk:'./app/build/outputs/apk/release/app-release.apk'
-		)
-	end
-  
 	desc "Deploy to Alpha"
 	lane :alpha do
 		upload_to_play_store(
-			track: 'internal',
-			skip_upload_apk: true,	
-			track_promote_to: 'alpha',
+			track: 'alpha',
+			apk:'./app/build/outputs/apk/release/app-release.apk'
 			version_code: $BUILD_NUMBER
 		)
 	end

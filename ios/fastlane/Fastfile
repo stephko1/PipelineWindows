@@ -119,6 +119,8 @@ platform :ios do
 		upload_to_testflight(
 		 ipa: "./build/Pipeline.ipa",
 		 skip_waiting_for_build_processing: true,
+		 groups: "group",
+		 distribute_external: true,
 		 submission_information: {
       			add_id_info_limits_tracking: true,
       			add_id_info_serves_ads: false,
@@ -155,19 +157,19 @@ platform :ios do
 
 		gym(
 		 workspace: "Pipeline.xcworkspace",
-          	 scheme: "Pipeline",
-          	 configuration: "Release",
-          	 clean: true,
-          	 export_method: "app-store",
-          	 output_directory:"./build/",
-          	 export_options: {
-            		method: "app-store",
-            		provisioningProfiles: { 
-              		 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
-            		}
-          	 },
-          	 output_name: "Pipeline.ipa"
-        		)
+		 scheme: "Pipeline",
+		 configuration: "Release",
+		 clean: true,
+		 export_method: "app-store",
+		 output_directory:"./build/",
+		 export_options: {
+			method: "app-store",
+			provisioningProfiles: { 
+			 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
+			}
+		 },
+		 output_name: "Pipeline.ipa"
+		)
 
 		upload_to_app_store(
 		 ipa: "./build/Pipeline.ipa",
