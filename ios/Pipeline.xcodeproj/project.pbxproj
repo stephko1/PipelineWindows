@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		AD6031322646FD8E00806D74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D4564C8226401F3C00D00F0C /* Pipeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pipeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4564C8226401F3C00D00F0C /* Pipeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Pipeline.app; path = "/Users/meks/Desktop/Jenkins/workspace/Pipeline/ios/build/Debug-iphoneos/Pipeline.app"; sourceTree = "<absolute>"; };
 		D4564C8526401F3C00D00F0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D4564C8626401F3C00D00F0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D4564C8826401F3C00D00F0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -47,10 +47,10 @@
 		D4564C9126401F3D00D00F0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4564C9326401F3D00D00F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4564C9426401F3D00D00F0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D4564C9A26401F3D00D00F0C /* PipelineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PipelineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4564C9A26401F3D00D00F0C /* PipelineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PipelineTests.xctest; path = "/Users/meks/Desktop/Jenkins/workspace/Pipeline/ios/build/Debug-iphoneos/PipelineTests.xctest"; sourceTree = "<absolute>"; };
 		D4564C9E26401F3D00D00F0C /* PipelineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PipelineTests.m; sourceTree = "<group>"; };
 		D4564CA026401F3D00D00F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4564CA526401F3D00D00F0C /* PipelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PipelineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4564CA526401F3D00D00F0C /* PipelineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = PipelineUITests.xctest; path = "/Users/meks/Desktop/Jenkins/workspace/Pipeline/ios/build/Debug-iphoneos/PipelineUITests.xctest"; sourceTree = "<absolute>"; };
 		D4564CA926401F3D00D00F0C /* PipelineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PipelineUITests.m; sourceTree = "<group>"; };
 		D4564CAB26401F3D00D00F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,18 +86,7 @@
 				D4564C8426401F3C00D00F0C /* Pipeline */,
 				D4564C9D26401F3D00D00F0C /* PipelineTests */,
 				D4564CA826401F3D00D00F0C /* PipelineUITests */,
-				D4564C8326401F3C00D00F0C /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		D4564C8326401F3C00D00F0C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D4564C8226401F3C00D00F0C /* Pipeline.app */,
-				D4564C9A26401F3D00D00F0C /* PipelineTests.xctest */,
-				D4564CA526401F3D00D00F0C /* PipelineUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		D4564C8426401F3C00D00F0C /* Pipeline */ = {
@@ -231,7 +220,7 @@
 				Base,
 			);
 			mainGroup = D4564C7926401F3C00D00F0C;
-			productRefGroup = D4564C8326401F3C00D00F0C /* Products */;
+			productRefGroup = D4564C7926401F3C00D00F0C;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
