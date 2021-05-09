@@ -36,9 +36,9 @@ Alpha Version
 fastlane ios beta
 ```
 Beta Version
-### ios release
+### ios store
 ```
-fastlane ios release
+fastlane ios store
 ```
 Release app
 

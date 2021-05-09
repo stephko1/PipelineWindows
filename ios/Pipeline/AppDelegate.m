@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-@import Firebase;
+//@import Firebase;
 
 @interface AppDelegate ()
 
@@ -16,7 +16,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [FIRApp configure];
+    //[FIRApp configure];
     return YES;
 }
 
