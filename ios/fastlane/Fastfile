@@ -80,19 +80,19 @@ platform :ios do
 
 		gym(
 		 workspace: "Pipeline.xcworkspace",
-          	 scheme: "Pipeline",
-          	 configuration: "Release",
-          	 clean: true,
-          	 export_method: "app-store",
-          	 output_directory:"./build/",
-          	 export_options: {
-            		method: "app-store",
-            		provisioningProfiles: { 
-              		 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
-            		}
-          	 },
-          	 output_name: "Pipeline.ipa"
-        		)
+		 scheme: "Pipeline",
+		 configuration: "Release",
+		 clean: true,
+		 export_method: "app-store",
+		 output_directory:"./build/",
+		 export_options: {
+				method: "app-store",
+				provisioningProfiles: { 
+				 "com.meks.Pipeline" => ENV["sigh_com.meks.Pipeline_appstore_profile-name"]
+				}
+		 },
+		 output_name: "Pipeline.ipa"
+		)
 	end
 
 	desc "Alpha Version"
@@ -144,7 +144,7 @@ platform :ios do
 	
 
 	desc "Release app"
-	lane :release do
+	lane :store do
 		app_store_connect_api_key(
 		 key_id: "D4W6CGNRJF",
 		 issuer_id: "3548afcc-2078-4234-b513-2cd64fe470af",

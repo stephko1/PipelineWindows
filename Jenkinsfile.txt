@@ -1,0 +1,178 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git') {
+            steps {
+                git url:'https://github.com/stephko1/PipelineWindows.git', branch:'main'
+                node('Mac') {
+                    git url:'https://github.com/stephko1/PipelineWindows.git', branch:'main'
+                }
+            }
+        }
+        stage('Statische Code Analyse'){
+            parallel{
+                stage('Code Analyse Android'){
+                    steps{
+                        dir("Android"){
+                            //sh 'chmod +x ./gradlew'
+                            //bat 'C:/Ruby25-x64/bin/bundle update fastlane'
+                            bat "gradlew.bat -D'sonar.host.url=http://localhost:9000' sonarqube"                          
+                            //sh '/home/ec2-user/.rvm/gems/ruby-2.5.9/wrappers/fastlane test'
+                        }
+                    }
+                }
+                stage('Code Analyse iOS'){
+                    steps{
+                        node('Mac') {
+                            dir("ios"){
+                                sh 'bundle update fastlane'
+                                //sh '/home/ec2-user/.rvm/gems/ruby-2.5.9/wrappers/fastlane test'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Build & Sign'){
+            parallel{
+                stage('Build & Sign Android'){
+                    steps{
+                        dir("Android"){
+                            bat 'C:/Ruby25-x64/bin/fastlane build'
+                        }
+                    }
+                }
+                stage('Build & Sign iOS'){
+                    steps{
+                        node('Mac') {
+                            dir("ios"){
+                                sh 'fastlane build'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+		stage('Unit Test'){
+            parallel{
+                stage('Test Android'){
+                    steps{
+                        dir("Android"){
+                            //TEST
+                        }
+                    }
+                }
+                stage('Test iOS'){
+                    steps{
+                        node('Mac') {
+                            dir("ios"){
+                                //TEST
+                            }
+                        }
+                    }
+                }
+            }
+        }
+		stage('Alpha Deployment'){
+            parallel{
+                stage('Alpha Android'){
+                    steps{
+                        dir("Android"){
+                            bat 'C:/Ruby25-x64/bin/fastlane alpha'
+                        }
+                    }
+                }
+                stage('Alpha iOS'){
+                    steps{
+                        node('Mac') {
+                            dir("ios"){
+                                sh 'fastlane alpha'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+		stage('Automatische Tests'){
+            parallel{
+                stage('Test Android'){
+                    steps{
+                        dir("Android"){
+                            //TEST
+                        }
+                    }
+                }
+                stage('Test iOS'){
+                    steps{
+                        node('Mac') {
+                            dir("ios"){
+                                //TEST
+                            }
+                        }
+                    }
+                }
+            }
+        }
+		stage('Beta Deployment'){
+            parallel{
+                stage('Beta Android'){
+                    input {
+                        message "Deploy Betaversion?"
+                        ok "Yes"
+                    }
+                    steps{
+                        dir("Android"){
+                            bat 'C:/Ruby25-x64/bin/fastlane beta'
+                        }
+                    }
+				}
+				stage('Test iOS'){
+                    input {
+                        message "Deploy Betaversion?"
+                        ok "Yes"
+                    }
+                    steps{
+						node('Mac') {
+							dir("ios"){
+								sh 'fastlane beta'
+							}
+						}
+                    }
+                }
+            }
+        }
+		stage('Store Deployment'){
+            parallel{
+                stage('Store Android'){
+                    input {
+                        message "Deploy Betaversion?"
+                        ok "Yes"
+                    }
+                    steps{
+                        dir("Android"){
+                            bat 'C:/Ruby25-x64/bin/fastlane store'
+                        }
+                    }
+				}
+				stage('Store iOS'){
+                    input {
+                        message "Deploy Betaversion?"
+                        ok "Yes"
+                    }
+                    steps{
+						node('Mac') {
+							dir("ios"){
+								sh 'fastlane store'
+							}
+						}
+                    }
+                }
+            }
+        }
+    }
+	post {
+        always {
+            cleanWs(cleanWhenNotBuilt: false, deleteDirs: true)
+        }
+    }
+}
