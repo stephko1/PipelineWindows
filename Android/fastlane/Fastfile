@@ -36,12 +36,33 @@ platform :android do
 		)
 	end
 
+	desc "Unit Tests"
+	lane :unit_test do
+	  gradle(task: "test")
+	end
+
+
 	desc "Deploy to Alpha"
 	lane :alpha do
 		upload_to_play_store(
 			track: 'alpha',
 			apk:'./app/build/outputs/apk/release/app-release.apk',
 			version_code: $BUILD_NUMBER
+		)
+	end
+	
+	desc "UI Testing"
+	lane :ui_test do
+		appium(
+		 app_path:  './app/build/outputs/apk/release/app-release.apk',
+		 spec_path: 'appium/spec',
+		 platform:  'Android',
+		 caps: {
+			deviceName: "Android Emulator"
+		 },
+		 appium_lib: {
+			wait: 10
+		 }
 		)
 	end
 

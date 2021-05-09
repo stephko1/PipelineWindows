@@ -93,6 +93,14 @@ platform :ios do
 		 output_name: "Pipeline.ipa"
 		)
 	end
+	
+	desc "Unit Test"
+	lane :unit_test do
+		scan(
+		  workspace: "Pipeline.xcworkspace",
+		  devices: ["iPhone X", "iPhone 12"]
+		)
+	end
 
 	desc "Alpha Version"
 	lane :alpha do
@@ -102,6 +110,21 @@ platform :ios do
 		 release_notes: "Test this app - New Features!",
 		 firebase_cli_token: "1//09FUeruJavUE0CgYIARAAGAkSNwF-L9IrM1LbI9nwR0jYKcrHMbIArw6aOdHoscZaNj0kPDvEPnl5w0FKQNqfRJZRB3xCCgLPTNw",
 		 ipa_path: "./build/Pipeline.ipa"
+		)
+	end
+	
+	desc "UI Testing"
+	lane :ui_test do
+		appium(
+		 app_path:  "./build/Pipeline.ipa",
+		 spec_path: "appium/spec",
+		 platform:  "iOS",
+		 caps: {
+			deviceName:    "iPhone 12"
+		 },
+		 appium_lib: {
+			wait: 10
+		 }
 		)
 	end
 	
